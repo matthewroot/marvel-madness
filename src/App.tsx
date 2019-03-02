@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
+import MarvelEvents from './components/MarvelEvents';
+
 import './App.css';
 
 class App extends Component {
+  state = { events: [] };
+  componentDidMount() {
+    let apiKey = process.env.REACT_APP_API_KEY;
+
+    fetch(`http://gateway.marvel.com/v1/public/events?apikey=${apiKey}`)
+      .then(response => response.json())
+      .then(json => {
+        let data = json.data;
+        this.setState({ events: data.results });
+
+        console.log(this.state.events[0]);
+      });
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <MarvelEvents events={this.state.events} />
       </div>
     );
   }
