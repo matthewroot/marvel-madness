@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MarvelEventCard from './MarvelEventCard';
 import { MarvelEventInterface } from '../interfaces/MarvelEventInterface';
 
 export default class MarvelEventsList extends Component<any, any> {
@@ -12,7 +13,7 @@ export default class MarvelEventsList extends Component<any, any> {
         <h1>Marvel Events</h1>
         <ul>
           {this.props.events.map((event: MarvelEventInterface) => {
-            return <li key={event.id}>{event.title}</li>;
+            return <MarvelEventCard event={event} />;
           })}
         </ul>
       </div>
