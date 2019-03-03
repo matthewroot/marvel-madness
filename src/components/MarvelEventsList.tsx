@@ -15,7 +15,7 @@ export default class MarvelEventsList extends Component<any, any> {
         <h1>Marvel Events</h1>
         <ul className="MarvelEventsList">
           {this.props.events.map((event: MarvelEventInterface) => {
-            return <MarvelEventCard event={event} />;
+            return <MarvelEventCard event={event} key={event.id} />;
           })}
         </ul>
       </div>
