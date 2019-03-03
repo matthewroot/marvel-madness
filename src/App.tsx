@@ -21,7 +21,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="Marvel Madness">
+      <div className="App">
         <MarvelEventsList events={this.state.events} />
       </div>
     );
