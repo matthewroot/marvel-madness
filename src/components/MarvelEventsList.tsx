@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class MarvelEvents extends Component<any, any> {
+export default class MarvelEventsList extends Component<any, any> {
   constructor(props: any) {
     super(props);
   }
@@ -14,7 +14,6 @@ export default class MarvelEvents extends Component<any, any> {
             return <li key={event.id}>{event.title}</li>;
           })}
         </ul>
-        {this.props.events.length}
       </div>
     );
   }

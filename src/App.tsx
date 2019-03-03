@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import MarvelEvents from './components/MarvelEvents';
+import MarvelEventsList from './components/MarvelEventsList';
 
 import './App.css';
 
@@ -21,8 +21,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <MarvelEvents events={this.state.events} />
+      <div className="Marvel Madness">
+        <MarvelEventsList events={this.state.events} />
       </div>
     );
   }
