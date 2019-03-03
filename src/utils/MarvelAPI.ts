@@ -7,11 +7,11 @@ export default class MarvelAPI {
     return version;
   }
 
-  static async get(entity: string, entityID?: string, subEntity?: string) {
+  static async get(entity: string, entityID?: number, subEntity?: string) {
     let pathElements: string[] = [entity];
 
     if (entityID) {
-      pathElements.push(entityID);
+      pathElements.push(entityID.toString());
     }
 
     if (subEntity) {
