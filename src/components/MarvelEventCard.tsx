@@ -6,10 +6,24 @@ export default class MarvelEventCard extends Component<
   {}
 > {
   render() {
+    const imagePath = this.props.event.thumbnail.path.concat(
+      '.',
+      this.props.event.thumbnail.extension
+    );
+
+    const divStyle = {
+      height: '66%',
+      width: 'auto',
+      backgroundImage: 'url(' + imagePath + ')',
+      backgroundPosition: 'center top',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'contain',
+    };
+
     return (
       <li key={this.props.event.id}>
+        <div style={divStyle} />
         <h2>{this.props.event.title}</h2>
-        <p>{this.props.event.description}</p>
       </li>
     );
   }
