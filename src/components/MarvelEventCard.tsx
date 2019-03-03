@@ -6,7 +6,12 @@ export default class MarvelEventCard extends Component<
   {}
 > {
   render() {
-    return <li key={this.props.event.id}>{this.props.event.title}</li>;
+    return (
+      <li key={this.props.event.id}>
+        <h2>{this.props.event.title}</h2>
+        <p>{this.props.event.description}</p>
+      </li>
+    );
   }
 }
 
