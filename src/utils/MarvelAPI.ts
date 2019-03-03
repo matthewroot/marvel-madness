@@ -7,23 +7,50 @@ export default class MarvelAPI {
     return version;
   }
 
-  static async get(entity: string, entityID?: number, subEntity?: string) {
-    let pathElements: string[] = [entity];
+  static async get(query: QueryInterface) {
+    let { path, queryParams } = parseQuery(query);
 
-    if (entityID) {
-      pathElements.push(entityID.toString());
-    }
-
-    if (subEntity) {
-      pathElements.push(subEntity);
-    }
-
-    const path: string = pathElements.join('/');
     const response = await fetch(
-      `${baseURI}/${version}/public/${path}?apikey=${apiKey}`
+      `${baseURI}/${version}/public/${path}?${queryParams}&apikey=${apiKey}`
     );
     const json = await response.json();
 
     return json.data.results;
   }
+}
+
+function parseQuery(query: QueryInterface) {
+  let pathElements: string[] = [query.entity];
+  let paramStrings = [];
+
+  if (query.entityID) {
+    pathElements.push(query.entityID.toString());
+  }
+
+  if (query.subEntity) {
+    pathElements.push(query.subEntity);
+  }
+
+  // TODO: update this to handle params that are not strings
+  if (query.params) {
+    for (const param in query.params) {
+      if (query.params.hasOwnProperty(param)) {
+        const value: string = query.params[param];
+
+        paramStrings.push(`${param}=${value}`);
+      }
+    }
+  }
+
+  const path: string = pathElements.join('/');
+  const queryParams: string = paramStrings.join('&');
+
+  return { path, queryParams };
+}
+
+interface QueryInterface {
+  entity: string;
+  entityID?: number;
+  subEntity?: string;
+  params?: any;
 }

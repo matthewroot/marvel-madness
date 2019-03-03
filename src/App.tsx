@@ -9,7 +9,7 @@ class App extends Component {
   state = { events: [] };
 
   async componentDidMount() {
-    const events = await MarvelAPI.get('events');
+    const events = await MarvelAPI.get({ entity: 'events' });
     this.setState({ events: events });
   }
 
