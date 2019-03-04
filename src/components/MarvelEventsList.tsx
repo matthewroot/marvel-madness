@@ -13,6 +13,7 @@ export default class MarvelEventsList extends Component<any, any> {
     return (
       <div>
         <h1>Marvel Events</h1>
+        {/* TODO: add loading indicator */}
         <ul className="MarvelEventsList">
           {this.props.events.map((event: MarvelEventInterface) => {
             return <MarvelEventCard event={event} key={event.id} />;

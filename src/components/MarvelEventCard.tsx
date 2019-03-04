@@ -11,7 +11,7 @@ export default class MarvelEventCard extends Component<
       this.props.event.thumbnail.extension
     );
 
-    const divStyle = {
+    const eventImageStyle = {
       height: '66%',
       width: 'auto',
       backgroundImage: 'url(' + imagePath + ')',
@@ -22,7 +22,9 @@ export default class MarvelEventCard extends Component<
 
     return (
       <li key={this.props.event.id}>
-        <div style={divStyle} />
+        {/* TODO: add mouse hover to show event.description. Have title slide
+          to the top of the card and replace image with description. */}
+        <div style={eventImageStyle} />
         <h2>{this.props.event.title}</h2>
       </li>
     );
