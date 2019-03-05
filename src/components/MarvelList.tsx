@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import MarvelAPI from '../utils/MarvelAPI';
 import MarvelEventCard from './MarvelEventCard';
+import MarvelCharacterCard from './MarvelCharacterCard';
 import * as MarvelEntityInterfaces from '../interfaces/MarvelEntityInterfaces';
 
 import './MarvelList.css';
 
 const cardComponents: any = {
-  // characters: MarvelCharacterCard,
+  characters: MarvelCharacterCard,
   events: MarvelEventCard,
   // series: MarvelSeriesCard,
 };
