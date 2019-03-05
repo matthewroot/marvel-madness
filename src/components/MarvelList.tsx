@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import MarvelAPI from '../utils/MarvelAPI';
-import MarvelEventCard from './MarvelEventCard';
 import MarvelCharacterCard from './MarvelCharacterCard';
+import MarvelEventCard from './MarvelEventCard';
+import MarvelSeriesCard from './MarvelSeriesCard';
 import * as MarvelEntityInterfaces from '../interfaces/MarvelEntityInterfaces';
 
 import './MarvelList.css';
@@ -9,7 +10,7 @@ import './MarvelList.css';
 const cardComponents: any = {
   characters: MarvelCharacterCard,
   events: MarvelEventCard,
-  // series: MarvelSeriesCard,
+  series: MarvelSeriesCard,
 };
 
 interface MarvelListProps {
@@ -46,9 +47,12 @@ export default class MarvelList extends Component<MarvelListProps, any> {
                 | MarvelEntityInterfaces.Series
             ) => {
               let cardProps: any = {};
-              cardProps[
-                this.props.type.slice(0, this.props.type.length - 1)
-              ] = data;
+
+              this.props.type === 'series'
+                ? (cardProps[this.props.type] = data)
+                : (cardProps[
+                    this.props.type.slice(0, this.props.type.length - 1)
+                  ] = data);
               cardProps.key = data.id;
               return <Card {...cardProps} />;
             }
