@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import MarvelAPI from './utils/MarvelAPI';
-import MarvelEventsList from './components/MarvelEventsList';
+import MarvelList from './components/MarvelList';
 
 import './App.css';
 
@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <MarvelEventsList events={this.state.events} />
+        <MarvelList type="event" data={this.state.events} />
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MarvelEventInterface } from '../interfaces/MarvelEventInterface';
+import * as MarvelEntityInterfaces from '../interfaces/MarvelEntityInterfaces';
 
 export default class MarvelEventCard extends Component<
   MarvelEventCardProps,
@@ -32,5 +32,5 @@ export default class MarvelEventCard extends Component<
 }
 
 interface MarvelEventCardProps {
-  event: MarvelEventInterface;
+  event: MarvelEntityInterfaces.Event;
 }
