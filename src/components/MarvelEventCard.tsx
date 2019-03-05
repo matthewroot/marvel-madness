@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MarvelCard from './MarvelCard';
 import * as MarvelEntityInterfaces from '../interfaces/MarvelEntityInterfaces';
 
 export default class MarvelEventCard extends Component<
@@ -11,22 +12,12 @@ export default class MarvelEventCard extends Component<
       this.props.event.thumbnail.extension
     );
 
-    const eventImageStyle = {
-      height: '66%',
-      width: 'auto',
-      backgroundImage: 'url(' + imagePath + ')',
-      backgroundPosition: 'center top',
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'contain',
-    };
-
     return (
-      <li key={this.props.event.id}>
-        {/* TODO: add mouse hover to show event.description. Have title slide
-          to the top of the card and replace image with description. */}
-        <div style={eventImageStyle} />
-        <h2>{this.props.event.title}</h2>
-      </li>
+      <MarvelCard
+        id={this.props.event.id}
+        header={this.props.event.title}
+        imagePath={imagePath}
+      />
     );
   }
 }
