@@ -5,6 +5,16 @@ import * as MarvelEntityInterfaces from '../interfaces/MarvelEntityInterfaces';
 
 import './MarvelList.css';
 
+const cardComponents: any = {
+  // characters: MarvelCharacterCard,
+  events: MarvelEventCard,
+  // series: MarvelSeriesCard,
+};
+
+interface MarvelListProps {
+  type: string;
+}
+
 export default class MarvelList extends Component<MarvelListProps, any> {
   constructor(props: any) {
     super(props);
@@ -20,40 +30,30 @@ export default class MarvelList extends Component<MarvelListProps, any> {
     const typeCapitalized: string =
       this.props.type.charAt(0).toUpperCase() + this.props.type.slice(1);
     const title: string = `Marvel ${typeCapitalized}`;
+    const Card = cardComponents[this.props.type];
 
     return (
       <div>
         <h1>{title}</h1>
         {/* TODO: add loading indicator */}
         <ul className="MarvelList">
-          {/* TODO NEXT: change this to render specific cards based on props.type */}
-          {this.state.data.map((data: any) => {
-            return <MarvelEventCard event={data} key={data.id} />;
-          })}
+          {this.state.data.map(
+            (
+              data:
+                | MarvelEntityInterfaces.Character
+                | MarvelEntityInterfaces.Event
+                | MarvelEntityInterfaces.Series
+            ) => {
+              let cardProps: any = {};
+              cardProps[
+                this.props.type.slice(0, this.props.type.length - 1)
+              ] = data;
+              cardProps.key = data.id;
+              return <Card {...cardProps} />;
+            }
+          )}
         </ul>
       </div>
     );
   }
-}
-
-// function componentFromType(type: string) {
-//   const cardMapping: any = {
-//     characters: 'MarvelCharacterCard',
-//     events: 'MarvelEventCard',
-//   };
-
-//   return cardMapping[type];
-// }
-
-// function interfaceFromType(type: string) {
-//   const interfaceMapping: any = {
-//     characters: MarvelEntityInterfaces.Character,
-//     events: MarvelEntityInterfaces.Event,
-//   };
-
-//   return interfaceMapping[type];
-// }
-
-interface MarvelListProps {
-  type: string;
 }

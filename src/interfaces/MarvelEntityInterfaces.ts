@@ -4,11 +4,15 @@ export interface Base {
   thumbnail: { path: string; extension: string };
 }
 
+export interface Character extends Base {
+  name: string;
+}
+
 export interface Event extends Base {
-  characters: any;
+  characters: Character[];
   title: string;
 }
 
-export interface Character extends Base {
-  name: string;
+export interface Series extends Base {
+  title: string;
 }

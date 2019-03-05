@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import * as MarvelEntityInterfaces from '../interfaces/MarvelEntityInterfaces';
 
 export default class MarvelCard extends Component<MarvelCardProps, {}> {
   render() {
