@@ -28,5 +28,5 @@ export default class MarvelCard extends Component<MarvelCardProps, {}> {
 }
 
 interface MarvelCardProps {
-  data: MarvelEntityInterfaces.Base;
+  data: MarvelEntityInterfaces.Event;
 }
