@@ -35,10 +35,10 @@ export default class MarvelList extends Component<MarvelListProps, any> {
     const Card = cardComponents[this.props.type];
 
     return (
-      <div>
+      <div className="marvel-list">
         <h1>{title}</h1>
         {/* TODO: add loading indicator */}
-        <ul className="MarvelList">
+        <ul>
           {this.state.data.map(
             (
               data:
