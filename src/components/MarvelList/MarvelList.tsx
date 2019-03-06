@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import MarvelAPI from '../utils/MarvelAPI';
-import MarvelCharacterCard from './MarvelCharacterCard';
-import MarvelEventCard from './MarvelEventCard';
-import MarvelSeriesCard from './MarvelSeriesCard';
-import * as MarvelEntityInterfaces from '../interfaces/MarvelEntityInterfaces';
+import MarvelAPI from '../../utils/MarvelAPI';
+import MarvelCharacterCard from '../MarvelCharacterCard';
+import MarvelEventCard from '../MarvelEventCard';
+import MarvelSeriesCard from '../MarvelSeriesCard';
+import * as MarvelEntityInterfaces from '../../interfaces/MarvelEntityInterfaces';
 
 import './MarvelList.css';
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import MarvelCard from './MarvelCard';
-import * as MarvelEntityInterfaces from '../interfaces/MarvelEntityInterfaces';
+import MarvelCard from '../MarvelCard';
+import * as MarvelEntityInterfaces from '../../interfaces/MarvelEntityInterfaces';
 
 export default class MarvelSeriesCard extends Component<
   MarvelSeriesCardProps,

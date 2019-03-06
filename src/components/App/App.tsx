@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import AppRoutes from './routes/AppRoutes';
-import MarvelNav from './components/MarvelNav';
+import AppRoutes from '../../routes/AppRoutes';
+import MarvelNav from '../MarvelNav';
 
 import './App.css';
 
