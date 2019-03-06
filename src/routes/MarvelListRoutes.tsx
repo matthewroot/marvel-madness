@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
-import MarvelList from './components/MarvelList';
+import MarvelList from '../components/MarvelList';
 
 export default class MarvelListRoutes extends Component {
   render() {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import MarvelListRoutes from './MarvelListRoutes';
+import MarvelListRoutes from './routes/MarvelListRoutes';
 
 import './App.css';
 
