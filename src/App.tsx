@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
-import MarvelListRoutes from './routes/MarvelListRoutes';
+import AppRoutes from './routes/AppRoutes';
 import MarvelNav from './components/MarvelNav';
 
 import './App.css';
@@ -11,7 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <MarvelNav />
-        <MarvelListRoutes />
+        <AppRoutes />
       </div>
     );
   }

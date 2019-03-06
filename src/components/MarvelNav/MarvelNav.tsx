@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import MarvelListRoutes from '../../routes/MarvelListRoutes';
 
 import './MarvelNav.css';
 
@@ -26,6 +27,7 @@ export default class MarvelNav extends Component {
             </li>
           </ul>
         </nav>
+        <MarvelListRoutes />
       </div>
     );
   }
