@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import MarvelListRoutes from '../../routes/MarvelListRoutes';
 
 import './MarvelNav.css';
 
 export default class MarvelNav extends Component {
   render() {
     return (
-      <div>
-        <nav className="marvel-nav">
+      <div className="marvel-nav">
+        <nav>
           <ul>
             <li>
               <NavLink exact to="/characters">
@@ -27,7 +26,6 @@ export default class MarvelNav extends Component {
             </li>
           </ul>
         </nav>
-        <MarvelListRoutes />
       </div>
     );
   }

@@ -1,26 +1,31 @@
+.marvel-nav {
+  height: 40px;
+}
+
 .marvel-nav ul {
-  background-color: red;
-  color: black;
   list-style-type: none;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
   position: fixed;
   top: 0;
   width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: red;
+  color: black;
+  overflow: hidden;
 }
 
 .marvel-nav li {
   float: left;
-  width: 33%;
+  width: 33.33%;
 }
 
 .marvel-nav li a {
-  color: white;
   display: block;
   padding: 10px 10px;
+  color: white;
   text-align: center;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .marvel-nav li a:hover {
@@ -28,5 +33,5 @@
 }
 
 .marvel-nav li .active {
-  border-bottom: 4px solid blue;
+  background-color: blue;
 }
