@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 import MarvelAPI from '../../utils/MarvelAPI';
-import MarvelCharacterCard from '../MarvelCharacterCard';
-import MarvelEventCard from '../MarvelEventCard';
-import MarvelSeriesCard from '../MarvelSeriesCard';
-import * as MarvelEntityInterfaces from '../../interfaces/MarvelEntityInterfaces';
+import MarvelCard from '../MarvelCard';
+import {
+  Character,
+  Event,
+  Series,
+} from '../../interfaces/MarvelEntityInterfaces';
 
 import './MarvelList.css';
-
-const cardComponents: any = {
-  characters: MarvelCharacterCard,
-  events: MarvelEventCard,
-  series: MarvelSeriesCard,
-};
 
 export default class MarvelList extends Component<any, any> {
   constructor(props: any) {
@@ -29,29 +25,30 @@ export default class MarvelList extends Component<any, any> {
     const typeCapitalized: string =
       type.charAt(0).toUpperCase() + type.slice(1);
     const title: string = `Marvel ${typeCapitalized}`;
-    const Card = cardComponents[type];
 
     return (
       <div className="marvel-list">
         <h1>{title}</h1>
         {/* TODO: add loading indicator */}
         <ul>
-          {this.state.data.map(
-            (
-              data:
-                | MarvelEntityInterfaces.Character
-                | MarvelEntityInterfaces.Event
-                | MarvelEntityInterfaces.Series
-            ) => {
-              let cardProps: any = {};
+          {this.state.data.map((data: Character | Event | Series) => {
+            let header;
 
-              type === 'series'
-                ? (cardProps[type] = data)
-                : (cardProps[type.slice(0, type.length - 1)] = data);
-              cardProps.key = data.id;
-              return <Card {...cardProps} />;
+            if ((data as Character).name) {
+              header = (data as Character).name;
+            } else {
+              header = (data as Event | Series).title;
             }
-          )}
+
+            return (
+              <MarvelCard
+                id={data.id}
+                header={header}
+                thumbnail={data.thumbnail}
+                key={data.id}
+              />
+            );
+          })}
         </ul>
       </div>
     );

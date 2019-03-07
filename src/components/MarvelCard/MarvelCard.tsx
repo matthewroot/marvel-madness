@@ -3,10 +3,15 @@ import { Link } from 'react-router-dom';
 
 export default class MarvelCard extends Component<MarvelCardProps, {}> {
   render() {
+    const imagePath = this.props.thumbnail.path.concat(
+      '.',
+      this.props.thumbnail.extension
+    );
+
     const imageStyle = {
       height: '66%',
       width: 'auto',
-      backgroundImage: 'url(' + this.props.imagePath + ')',
+      backgroundImage: 'url(' + imagePath + ')',
       backgroundPosition: 'center top',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'contain',
@@ -27,5 +32,5 @@ export default class MarvelCard extends Component<MarvelCardProps, {}> {
 interface MarvelCardProps {
   header: string;
   id: string;
-  imagePath: string;
+  thumbnail: { path: string; extension: string };
 }
