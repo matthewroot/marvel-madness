@@ -13,26 +13,23 @@ const cardComponents: any = {
   series: MarvelSeriesCard,
 };
 
-interface MarvelListProps {
-  type: string;
-}
-
-export default class MarvelList extends Component<MarvelListProps, any> {
+export default class MarvelList extends Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = { data: [] };
   }
 
   async componentDidMount() {
-    const data = await MarvelAPI.get({ entity: this.props.type });
+    const data = await MarvelAPI.get({ entity: this.state.type });
     this.setState({ data: data });
   }
 
   render() {
+    const type = this.props.match.path.slice(1);
     const typeCapitalized: string =
-      this.props.type.charAt(0).toUpperCase() + this.props.type.slice(1);
+      type.charAt(0).toUpperCase() + type.slice(1);
     const title: string = `Marvel ${typeCapitalized}`;
-    const Card = cardComponents[this.props.type];
+    const Card = cardComponents[type];
 
     return (
       <div className="marvel-list">
@@ -48,11 +45,9 @@ export default class MarvelList extends Component<MarvelListProps, any> {
             ) => {
               let cardProps: any = {};
 
-              this.props.type === 'series'
-                ? (cardProps[this.props.type] = data)
-                : (cardProps[
-                    this.props.type.slice(0, this.props.type.length - 1)
-                  ] = data);
+              type === 'series'
+                ? (cardProps[type] = data)
+                : (cardProps[type.slice(0, type.length - 1)] = data);
               cardProps.key = data.id;
               return <Card {...cardProps} />;
             }
