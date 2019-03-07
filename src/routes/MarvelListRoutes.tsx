@@ -9,7 +9,12 @@ export default class MarvelListRoutes extends Component {
     const listRoutes = entities.map(entity => {
       const entityPath = '/'.concat(entity);
       return (
-        <Route path={entityPath} render={() => <MarvelList type={entity} />} />
+        <Route
+          exact
+          path={entityPath}
+          render={() => <MarvelList type={entity} />}
+          key={entity}
+        />
       );
     });
 
