@@ -8,7 +8,7 @@ export default class AppRoutes extends Component {
     return (
       <Switch>
         <Route exact path="/">
-          <Redirect to="/events" />
+          <Redirect to="/characters" />
         </Route>
         <Route path="/characters/:id" component={MarvelEntityDetails} />
       </Switch>
