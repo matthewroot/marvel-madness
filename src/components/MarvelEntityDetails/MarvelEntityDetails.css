@@ -1,0 +1,10 @@
+.entity-details {
+  display: grid;
+  grid-template-columns: 33.33% 66.66%;
+  grid-template-rows: auto auto auto;
+  margin: 40px 150px;
+}
+
+.entity-details .entity-column-2 {
+  grid-column: 2 / 3;
+}

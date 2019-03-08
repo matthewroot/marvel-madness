@@ -10,19 +10,13 @@ export default class MarvelNav extends Component {
         <nav>
           <ul>
             <li>
-              <NavLink exact to="/characters">
-                Characters
-              </NavLink>
+              <NavLink to="/characters">Characters</NavLink>
             </li>
             <li>
-              <NavLink exact to="/events">
-                Events
-              </NavLink>
+              <NavLink to="/events">Events</NavLink>
             </li>
             <li>
-              <NavLink exact to="/series">
-                Series
-              </NavLink>
+              <NavLink to="/series">Series</NavLink>
             </li>
           </ul>
         </nav>

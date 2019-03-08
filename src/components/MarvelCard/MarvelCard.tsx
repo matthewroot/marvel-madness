@@ -15,7 +15,7 @@ export default class MarvelCard extends Component<MarvelCardProps, {}> {
       backgroundImage: 'url(' + imagePath + ')',
       backgroundPosition: 'center top',
       backgroundRepeat: 'no-repeat',
-      backgroundSize: 'contain',
+      backgroundSize: '100%',
     };
 
     return (

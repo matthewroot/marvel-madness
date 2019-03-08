@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
 import MarvelAPI from '../../utils/MarvelAPI';
 import MarvelCard from '../MarvelCard';
 import {
@@ -43,7 +44,7 @@ export default class MarvelList extends Component<any, any> {
 
             return (
               <li key={data.id}>
-                <Link to={`characters/${data.id}`} key={data.id}>
+                <Link to={`/${this.state.type}/${data.id}`} key={data.id}>
                   <MarvelCard
                     id={data.id}
                     header={header}

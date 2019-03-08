@@ -50,7 +50,7 @@ function parseQuery(query: QueryInterface) {
 
 interface QueryInterface {
   entity: string;
-  entityID?: number;
+  entityID?: string;
   subEntity?: string;
   params?: any;
 }
