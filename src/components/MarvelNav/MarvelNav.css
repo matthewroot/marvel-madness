@@ -29,9 +29,13 @@
 }
 
 .marvel-nav li a:hover {
-  background-color: darkred;
+  background-color: rgb(230, 19, 19);
 }
 
 .marvel-nav li .active {
   background-color: blue;
+}
+
+.marvel-nav li .active:hover {
+  background-color: rgb(19, 19, 209);
 }
