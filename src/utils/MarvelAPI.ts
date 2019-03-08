@@ -10,6 +10,8 @@ export default class MarvelAPI {
   static async get(query: QueryInterface) {
     let { path, queryParams } = parseQuery(query);
 
+    console.log(apiKey);
+
     const response = await fetch(
       `${baseURI}/${version}/public/${path}?${queryParams}&apikey=${apiKey}`
     );
