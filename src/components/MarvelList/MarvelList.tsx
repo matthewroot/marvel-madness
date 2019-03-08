@@ -14,18 +14,19 @@ import './MarvelList.css';
 export default class MarvelList extends Component<any, any> {
   constructor(props: any) {
     super(props);
-    this.state = { data: [], type: this.props.match.path.slice(1) };
+    this.state = { data: [] };
   }
 
+  type = this.props.match.path.slice(1);
+
   async componentDidMount() {
-    const data = await MarvelAPI.get({ entity: this.state.type });
+    const data = await MarvelAPI.get({ entity: this.type });
     this.setState({ data: data });
   }
 
   render() {
-    const type = this.state.type;
     const typeCapitalized: string =
-      type.charAt(0).toUpperCase() + type.slice(1);
+      this.type.charAt(0).toUpperCase() + this.type.slice(1);
     const title: string = `Marvel ${typeCapitalized}`;
 
     return (
@@ -44,7 +45,7 @@ export default class MarvelList extends Component<any, any> {
 
             return (
               <li key={data.id}>
-                <Link to={`/${this.state.type}/${data.id}`} key={data.id}>
+                <Link to={`/${this.type}/${data.id}`} key={data.id}>
                   <MarvelCard
                     id={data.id}
                     header={header}
