@@ -6,9 +6,12 @@ import MarvelCard from '../MarvelCard';
 import './MarvelEntityDetails.css';
 
 export default class MarvelEntityDetails extends Component<any, any> {
+  loading: boolean;
+
   constructor(props: any) {
     super(props);
-    this.state = { data: [], dataLoaded: false };
+    this.loading = true;
+    this.state = { data: [] };
   }
 
   async componentDidMount() {
@@ -17,13 +20,17 @@ export default class MarvelEntityDetails extends Component<any, any> {
       entityID: this.props.match.params.id,
     });
 
-    this.setState({ data: data, dataLoaded: true });
+    this.setState({ data: data });
+
+    if (data) {
+      this.loading = false;
+    }
   }
 
   render() {
     let elements = null;
 
-    if (this.state.dataLoaded) {
+    if (!this.loading) {
       let entity = this.state.data[0];
       let header = entity.name || entity.title;
       let thumbnail = entity.thumbnail;
