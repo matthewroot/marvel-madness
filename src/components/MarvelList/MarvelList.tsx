@@ -12,16 +12,27 @@ import {
 import './MarvelList.css';
 
 export default class MarvelList extends Component<any, any> {
+  mounted: boolean;
+
   constructor(props: any) {
     super(props);
+    this.mounted = false;
     this.state = { data: [] };
   }
 
   type = this.props.match.path.slice(1);
 
   async componentDidMount() {
+    this.mounted = true;
     const data = await MarvelAPI.get({ entity: this.type });
-    this.setState({ data: data });
+
+    if (this.mounted) {
+      this.setState({ data: data });
+    }
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
   }
 
   render() {
