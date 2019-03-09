@@ -25,13 +25,8 @@ export default class MarvelList extends Component<any, any> {
   }
 
   render() {
-    const typeCapitalized: string =
-      this.type.charAt(0).toUpperCase() + this.type.slice(1);
-    const title: string = `Marvel ${typeCapitalized}`;
-
     return (
       <div className="marvel-list">
-        <h1>{title}</h1>
         {/* TODO: add loading indicator */}
         <ul>
           {this.state.data.map((data: Character | Event | Series) => {

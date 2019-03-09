@@ -11,8 +11,10 @@ class App extends Component {
     return (
       <div className="App">
         <MarvelNav />
-        <AppRoutes />
-        <MarvelListRoutes />
+        <div className="main-container">
+          <AppRoutes />
+          <MarvelListRoutes />
+        </div>
       </div>
     );
   }

@@ -1,3 +1,8 @@
+.marvel-list {
+  grid-column: 2;
+  margin-top: 20px;
+}
+
 .marvel-list h1 {
   margin-top: 20px;
   position: relative;
