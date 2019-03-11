@@ -15,6 +15,8 @@ class App extends Component {
           <AppRoutes />
           <MarvelListRoutes />
         </div>
+        {/* TODO: Add footer with attribution statement and links
+            https://developer.marvel.com/documentation/attribution */}
       </div>
     );
   }
