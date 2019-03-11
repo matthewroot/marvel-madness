@@ -23,6 +23,7 @@ export default class MarvelList extends Component<any, any> {
     this.state = { data: [] };
   }
 
+  // TODO: Change this to use params.type instead
   type = this.props.match.path.slice(1);
 
   async componentDidMount() {

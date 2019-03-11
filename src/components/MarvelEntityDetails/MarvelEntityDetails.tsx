@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router';
 
 import MarvelAPI from '../../utils/MarvelAPI';
 import MarvelCard from '../MarvelCard';
+import MarvelPlot from '../MarvelPlot';
 
 import './MarvelEntityDetails.css';
 
@@ -40,6 +42,8 @@ export default class MarvelEntityDetails extends Component<any, any> {
             <p>Comics: {entity.comics.available}</p>
             <p>Stories: {entity.stories.available}</p>
           </div>
+          {/* TODO: pass match as props instead of using Route here? */}
+          <Route path="/:type/:id" component={MarvelPlot} />
         </div>
       );
     }
