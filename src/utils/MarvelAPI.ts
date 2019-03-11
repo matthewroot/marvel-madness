@@ -1,5 +1,5 @@
 const apiKey: string = process.env.REACT_APP_API_KEY || '';
-const baseURI: string = 'https://gateway.marvel.com/';
+const baseURI: string = 'https://gateway.marvel.com';
 const version: string = 'v1';
 
 export default class MarvelAPI {
@@ -9,6 +9,10 @@ export default class MarvelAPI {
 
   static async get(query: QueryInterface) {
     let { path, queryParams } = parseQuery(query);
+
+    console.log(
+      `${baseURI}/${version}/public/${path}?${queryParams}&apikey=${apiKey}`
+    );
 
     const response = await fetch(
       `${baseURI}/${version}/public/${path}?${queryParams}&apikey=${apiKey}`
