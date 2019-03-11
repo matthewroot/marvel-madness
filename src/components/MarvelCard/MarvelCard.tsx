@@ -4,10 +4,9 @@ import './MarvelCard.css';
 
 export default class MarvelCard extends Component<MarvelCardProps, {}> {
   render() {
-    const imagePath = this.props.thumbnail.path.concat(
-      '.',
-      this.props.thumbnail.extension
-    );
+    const imagePath = this.props.thumbnail.path
+      .concat('.', this.props.thumbnail.extension)
+      .replace(/$http/, 'https');
 
     const imageStyle = {
       height: '66%',
@@ -20,7 +19,6 @@ export default class MarvelCard extends Component<MarvelCardProps, {}> {
 
     return (
       <div className="marvel-card">
-        {/* TODO: add mouse hover to show description instead of title */}
         <div style={imageStyle} />
         <h2>{this.props.header}</h2>
       </div>
