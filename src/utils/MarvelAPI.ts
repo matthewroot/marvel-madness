@@ -10,16 +10,16 @@ export default class MarvelAPI {
   static async get(query: QueryInterface) {
     let { path, queryParams } = parseQuery(query);
 
-    console.log(
-      `${baseURI}/${version}/public/${path}?${queryParams}&apikey=${apiKey}`
-    );
+    try {
+      const response = await fetch(
+        `${baseURI}/${version}/public/${path}?${queryParams}&apikey=${apiKey}`
+      );
+      const json = await response.json();
 
-    const response = await fetch(
-      `${baseURI}/${version}/public/${path}?${queryParams}&apikey=${apiKey}`
-    );
-    const json = await response.json();
-
-    return json.data.results;
+      return json.data.results;
+    } catch (err) {
+      console.log(err);
+    }
   }
 }
 

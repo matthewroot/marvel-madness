@@ -3,7 +3,8 @@
 }
 
 .main-container {
+  font-weight: normal;
   display: grid;
-  grid-template-columns: 10% 1fr 10%;
+  grid-template-columns: 1fr 10fr 1fr;
   grid-template-rows: 20% auto;
 }

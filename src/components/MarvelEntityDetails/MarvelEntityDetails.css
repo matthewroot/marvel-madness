@@ -1,11 +1,21 @@
 .entity-details {
+  grid-column: 2;
   display: grid;
-  grid-template-columns: 33.33% 66.66%;
-  grid-template-rows: auto auto auto;
-  margin: 40px 150px;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 20px;
+  row-gap: 40px;
+  margin: 20px 150px;
+  align-items: center;
   text-align: left;
 }
 
+.entity-details .marvel-card {
+  grid-column: 1;
+  grid-row: 1;
+}
+
 .entity-details .entity-column-2 {
-  grid-column: 2 / 3;
+  grid-column: 2;
+  display: grid;
+  grid-template-rows: 1.5fr 1fr 1fr;
 }
