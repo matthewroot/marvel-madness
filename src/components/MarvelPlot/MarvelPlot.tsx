@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Comics from '../../utils/Comics';
 import MarvelAPI from '../../utils/MarvelAPI';
 
 export default class MarvelPlot extends Component<any, any> {
@@ -31,6 +32,8 @@ export default class MarvelPlot extends Component<any, any> {
 
     if (this.state.data) {
       this.loading = false;
+      const yearHisto = Comics.yearlyAppearances(this.state.data);
+      console.log(yearHisto);
     }
   }
 
