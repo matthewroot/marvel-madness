@@ -1,5 +1,4 @@
 import { Comics as ComicsInterface } from '../interfaces/MarvelEntityInterfaces';
-import { array } from 'prop-types';
 
 export default class Comics {
   static yearlyAppearances(comics: ComicsInterface[]) {

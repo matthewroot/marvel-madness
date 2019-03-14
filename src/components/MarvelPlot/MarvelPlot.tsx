@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 
 import Comics from '../../utils/Comics';
 import MarvelAPI from '../../utils/MarvelAPI';
@@ -32,8 +33,7 @@ export default class MarvelPlot extends Component<any, any> {
 
     if (this.state.data) {
       this.loading = false;
-      const yearHisto = Comics.yearlyAppearances(this.state.data);
-      console.log(yearHisto);
+      this.setState({ yearHisto: Comics.yearlyAppearances(this.state.data) });
     }
   }
 
@@ -42,10 +42,34 @@ export default class MarvelPlot extends Component<any, any> {
   }
 
   render() {
-    return (
-      <div>
-        I AM MARVEL PLOT! {this.state.data ? this.state.data.length : 'loading'}
-      </div>
+    let data = [];
+
+    if (this.state.yearHisto) {
+      for (const year in this.state.yearHisto) {
+        if (this.state.yearHisto.hasOwnProperty(year)) {
+          const appearances = this.state.yearHisto[year];
+          data.push({ year: year, appearances: appearances });
+        }
+      }
+    }
+
+    let barChart = (
+      <React.Fragment>
+        <h2>Yearly Appearances</h2>
+        <BarChart width={730} height={250} data={data}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="year" />
+          <YAxis />
+          <Tooltip />
+          <Bar
+            dataKey="appearances"
+            name="Appearances"
+            fill="rgba(38, 135, 245, 0.904)"
+          />
+        </BarChart>
+      </React.Fragment>
     );
+
+    return <div>{this.state.yearHisto ? barChart : 'loading'}</div>;
   }
 }
