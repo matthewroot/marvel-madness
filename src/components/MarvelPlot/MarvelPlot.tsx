@@ -2,18 +2,15 @@ import React, { Component } from 'react';
 
 import Comics from '../../utils/Comics';
 import MarvelAPI from '../../utils/MarvelAPI';
-import YearlyAppearancesPlot from './YearlyAppearancesPlot';
+import PlotBranch from './PlotBranch';
 
 export default class MarvelPlot extends Component<any, any> {
-  loading: boolean;
   mounted: boolean;
 
   constructor(props: any) {
     super(props);
-    // TODO: Extract separate Branch component to handle loading and error rendering
-    this.loading = true;
     this.mounted = false;
-    this.state = { data: undefined };
+    this.state = { data: undefined, loading: true };
   }
 
   async componentDidMount() {
@@ -39,7 +36,7 @@ export default class MarvelPlot extends Component<any, any> {
         ),
       });
 
-      this.loading = false;
+      this.setState({ loading: false });
     }
   }
 
@@ -65,12 +62,7 @@ export default class MarvelPlot extends Component<any, any> {
   render() {
     return (
       <div className="marvel-plot">
-        {this.state.plotData ? (
-          <YearlyAppearancesPlot {...this.state} />
-        ) : (
-          // TODO: Extract loading spinner into component and use here
-          'loading'
-        )}
+        <PlotBranch {...this.state} />
       </div>
     );
   }
