@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 
 import Comics from '../../utils/Comics';
 import MarvelAPI from '../../utils/MarvelAPI';
+import YearlyAppearancesPlot from './YearlyAppearancesPlot';
 
 export default class MarvelPlot extends Component<any, any> {
   loading: boolean;
@@ -10,6 +10,7 @@ export default class MarvelPlot extends Component<any, any> {
 
   constructor(props: any) {
     super(props);
+    // TODO: Extract separate Branch component to handle loading and error rendering
     this.loading = true;
     this.mounted = false;
     this.state = { data: undefined };
@@ -32,8 +33,13 @@ export default class MarvelPlot extends Component<any, any> {
     }
 
     if (this.state.data) {
+      this.setState({
+        plotData: this.formatToBarChart(
+          Comics.yearlyAppearances(this.state.data)
+        ),
+      });
+
       this.loading = false;
-      this.setState({ yearHisto: Comics.yearlyAppearances(this.state.data) });
     }
   }
 
@@ -41,35 +47,31 @@ export default class MarvelPlot extends Component<any, any> {
     this.mounted = false;
   }
 
-  render() {
+  formatToBarChart(histogram: any) {
     let data = [];
 
-    if (this.state.yearHisto) {
-      for (const year in this.state.yearHisto) {
-        if (this.state.yearHisto.hasOwnProperty(year)) {
-          const appearances = this.state.yearHisto[year];
+    if (histogram) {
+      for (const year in histogram) {
+        if (histogram.hasOwnProperty(year)) {
+          const appearances = histogram[year];
           data.push({ year: year, appearances: appearances });
         }
       }
     }
 
-    let barChart = (
-      <React.Fragment>
-        <h2>Yearly Appearances</h2>
-        <BarChart width={730} height={250} data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="year" />
-          <YAxis />
-          <Tooltip />
-          <Bar
-            dataKey="appearances"
-            name="Appearances"
-            fill="rgba(38, 135, 245, 0.904)"
-          />
-        </BarChart>
-      </React.Fragment>
-    );
+    return data;
+  }
 
-    return <div>{this.state.yearHisto ? barChart : 'loading'}</div>;
+  render() {
+    return (
+      <div className="marvel-plot">
+        {this.state.plotData ? (
+          <YearlyAppearancesPlot {...this.state} />
+        ) : (
+          // TODO: Extract loading spinner into component and use here
+          'loading'
+        )}
+      </div>
+    );
   }
 }
